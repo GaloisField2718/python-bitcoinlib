@@ -194,7 +194,8 @@ class BaseProxy(object):
             except IOError as err:
                 if 'rpcpassword' in conf:
                     authpair = "%s:%s" % (conf['rpcuser'], conf['rpcpassword'])
-
+                elif 'rpcauth' in conf:
+                    authpair = "%s" % (conf['rpcauth'])
                 else:
                     raise ValueError('Cookie file unusable (%s) and rpcpassword not specified in the configuration file: %r' % (err, btc_conf_file))
 
